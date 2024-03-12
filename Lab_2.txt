@@ -1,0 +1,54 @@
+import random
+
+def roll_dice():
+    return random.randint(1, 6)
+    
+def num_rolls():
+    while True:
+       
+            user = int(input("Enter to roll the dice more than 5 times: ")) 
+            if user < 5:
+                print("I told you to enter a number greater than 5.Enter again.") 
+            else:
+                return user
+       
+def main():
+    while True:
+        user_dice = []
+        computer_dice = []
+        rolls_count = num_rolls()  
+
+       
+        for i in range(1, rolls_count + 1):  
+            
+            user_roll = roll_dice()
+            computer_roll = roll_dice()
+            
+            user_dice.append(user_roll)
+            computer_dice.append(computer_roll)
+            
+           
+            
+            print(f"Dice #{i}: You rolled {user_roll} Computer rolled {computer_roll}")
+           
+
+        user_total = sum(user_dice)
+        computer_total = sum(computer_dice)
+
+        if user_total > computer_total:
+            print("\nCongrats! You won!")
+        elif user_total < computer_total:
+            print("\nSorry, you lost.")
+        else:
+            print("\nIt's a tie!")
+
+        print(f"\nYou rolled: {user_dice}, total = {user_total}.")
+        print(f"Computer rolled: {computer_dice}, total = {computer_total}.")
+
+        play_again = input("Do you want to play another round? (y/n): ")  
+        if play_again.lower() != 'y':
+            print("Thanks for playing!")
+            break
+        
+if __name__ == "__main__":
+    main()
